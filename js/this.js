@@ -57,7 +57,7 @@
 //     console.log('showTag -> this.tag', this.tag);
 // };
 
-// showTag();
+// // showTag();
 
 // const user = {
 //     tag: 'Mango',
@@ -93,7 +93,7 @@
 // const user = {
 //     tag: 'Mango',
 //     showTag() {
-//         console.log('showTag -> this', this);
+//         console.log('showTag -> this', this); 
 //         console.log('showTag -> this.tag', this.tag);
 //     },
 // };
@@ -130,10 +130,10 @@
 //     },
 // };
 
-// book.showThis(); // Какой this ???
+// // book.showThis(); // Какой this ???
 
-// const outerShowThis = book.showThis;
-// outerShowThis(); // Какой this ???
+// // const outerShowThis = book.showThis;
+// // outerShowThis(); // Какой this ???
 
 // const outerShowTitle = book.showTitle;
 // outerShowTitle(); // Какой this ???
@@ -191,21 +191,21 @@
  * Тренируемся 5
  */
 
-// const counter = {
-//     value: 0,
-//     increment(value) {
-//         console.log('increment -> this', this);
-//         this.value += value;
-//     },
-//     decrement(value) {
-//         console.log('decrement -> this', this);
-//         this.value -= value;
-//     },
-// };
+const counter = {
+    value: 0,
+    increment(value) {
+        console.log('increment -> this', this);
+        this.value += value;
+    },
+    decrement(value) {
+        console.log('decrement -> this', this);
+        this.value -= value;
+    },
+};
 
-// const updateCounter = function (value, operation) {
-//     operation(value);
-// };
+co nst updateCounter = function (value, operation) {
+    operation(value);
+};
 
-// updateCounter(10, counter.increment);
-// updateCounter(5, counter.decrement);
+updateCounter(10, counter.increment);
+updateCounter(5, counter.decrement);
