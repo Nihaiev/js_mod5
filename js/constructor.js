@@ -10,6 +10,8 @@
  */
 
 const Car = function ({ brand, model, price } = {}) {
+
+    
   // const { brand, model, price } = config;
   // 2. Функция вызывается в контексте созданного объекта,
   //    то есть в this записывается ссылка на него
