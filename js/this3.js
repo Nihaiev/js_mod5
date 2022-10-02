@@ -71,8 +71,30 @@ foo();
  */
 
 const showTag = function () {
-  console.log(this);
-  console.log(this.tag);
+  console.log('showTag -> this', this);
+  console.log('showTag ->this.tag', this.tag);
 };
 
-//9
+// showTag();
+
+const user = {
+  tag: 'Mango',
+};
+
+user.showUserTag = showTag;
+console.log('user', user);
+
+user.showUserTag(); //не важливо де ти обявив цю функцію, важливо як ти її викликав
+
+// тому значення this визначається в момент виклику а не в момент обявлення
+/**
+ * Що выбулося по кроках
+ * 1. на властивості user я створив властивість showUserTag і записав туди посилання showTag на оригінальну функцію
+ * 2. Після чого ми викликали цей метод user.showUserTag(); в цьому методі лежть посилання на showTag і ця функція викликалась у контексті user
+ * Коли вона так викликається її this присвоюється обєкту який її викликав
+ *
+ */
+
+/**
+ * Виклик без контекса, но оголошена як метод обэкта
+ */
