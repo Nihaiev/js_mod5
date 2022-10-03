@@ -23,9 +23,9 @@ const fnA = function () {
   console.log('hello');
 };
 
-const fnB = fnA; // так як функція це складний у змінну B ставиться посилання на комірку памяті в якій збурігається ця функція
+// const fnB = fnA; // так як функція це складний у змінну B ставиться посилання на комірку памяті в якій збурігається ця функція
 
-console.log('fnA===fnB:', fnA === fnB); // саме тому ми в такому порівняні отримуємо true
+// console.log('fnA===fnB:', fnA === fnB); // саме тому ми в такому порівняні отримуємо true
 
 /**
  * два обєкта дорівнюють один одному тільки тоді коли стоїть посилання на один і тот же обєкт
@@ -59,32 +59,32 @@ console.log('fnA===fnB:', fnA === fnB); // саме тому ми в таком�
  *  - не в строгому = window
  */
 
-const foo = function () {
-  console.log('foo->this', this);
-};
+// const foo = function () {
+//   console.log('foo->this', this);
+// };
 
-foo();
+// foo();
 
 /**
  * Як метод обєкта но обявлена як зовнішня функція
  * В контексті обєкта
  */
 
-const showTag = function () {
-  console.log('showTag -> this', this);
-  console.log('showTag ->this.tag', this.tag);
-};
+// const showTag = function () {
+//   console.log('showTag -> this', this);
+//   console.log('showTag ->this.tag', this.tag);
+// };
 
 // showTag();
 
-const user = {
-  tag: 'Mango',
-};
+// const user = {
+//   tag: 'Mango',
+// };
 
-user.showUserTag = showTag;
-console.log('user', user);
+// user.showUserTag = showTag;
+// console.log('user', user);
 
-user.showUserTag(); //не важливо де ти обявив цю функцію, важливо як ти її викликав
+// user.showUserTag(); //не важливо де ти обявив цю функцію, важливо як ти її викликав
 
 // тому значення this визначається в момент виклику а не в момент обявлення
 /**
@@ -99,4 +99,37 @@ user.showUserTag(); //не важливо де ти обявив цю функц
  * Виклик без контекса, но оголошена як метод обэкта
  */
 
-// 17
+// const user = {
+//   tag: 'Mango',
+//   showTag() {
+//     console.log('showTag -> this', this);
+//     console.log('showTag ->this.tag', this.tag);
+//   },
+// };
+
+// user.showTag();
+
+// const outerShowTag = user.showTag;
+
+// outerShowTag();
+
+/**
+ * Контекст в callback - функції
+ */
+
+const user = {
+  tag: 'Mango',
+  showTag() {
+    console.log('showTag->this', this);
+    console.log('showTag->this.tag', this.tag);
+  },
+};
+
+const invokeAction = function (action) {
+  console.log(action);
+  action();
+};
+
+invokeAction(user.showTag);
+
+//27
